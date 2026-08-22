@@ -6,6 +6,7 @@
         {
           "group": "Welcome and Introduction",
           "pages": [
+            "introduction",
             "what-is-dxmentorship",
             "purpose-of-this-guide",
             "how-to-contribute"
@@ -14,6 +15,7 @@
         {
           "group": "What is Developer Relations",
           "pages": [
+            "what-is-devrel",
             "definitions-and-origins",
             "core-pillars",
             "why-devrel-matters"
@@ -22,6 +24,7 @@
         {
           "group": "Developer Advocacy",
           "pages": [
+            "developer-advocacy",
             "public-speaking",
             "content-creation",
             "developer-champions"
@@ -30,6 +33,7 @@
         {
           "group": "Developer Experience",
           "pages": [
+            "developer-experience",
             "tooling-dx-audits",
             "documentation-best-practices",
             "feedback-collection"
@@ -38,6 +42,7 @@
         {
           "group": "Community Building",
           "pages": [
+            "community-building",
             "online-community-management",
             "events-and-meetups",
             "content-and-knowledge-sharing"
@@ -46,6 +51,7 @@
         {
           "group": "Measuring DevRel Impact",
           "pages": [
+            "measuring-devrel",
             "kpi-and-okrs",
             "qualitative-vs-quantitative-metrics",
             "reporting-to-leadership"
@@ -125,5 +131,8 @@
       "tab": "Changelog",
       "href": "/changelog"
     }
-  ]
+  ],
+  "markdown": {
+    "enabled": true
+  }
 }
