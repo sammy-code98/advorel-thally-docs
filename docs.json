@@ -1,87 +1,129 @@
 {
-  "theme": "default",
-  "appearance": {
-    "contentIcons": "accent"
-  },
-  "markdown": {
-    "enabled": true
-  },
-  "i18n": {
-    "defaultLocale": "en",
-    "locales": [
-      {
-        "code": "en",
-        "label": "English"
-      }
-    ]
-  },
-  "navbar": {
-    "primary": {
-      "label": "Get started",
-      "href": "/quickstart"
-    },
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/Tabintel/dxdevrel_guides.git",
-        "type": "github"
-      }
-    ]
-  },
   "tabs": [
     {
-      "tab": "Get started",
+      "tab": "The Knowledge Base for Developer Advocates",
       "groups": [
         {
-          "group": "Get started",
+          "group": "Welcome and Introduction",
           "pages": [
-            "introduction",
-            "quickstart"
+            "what-is-dxmentorship",
+            "purpose-of-this-guide",
+            "how-to-contribute"
           ]
         },
         {
-          "group": "Design your docs",
+          "group": "What is Developer Relations",
           "pages": [
-            "components",
-            "customization"
+            "definitions-and-origins",
+            "core-pillars",
+            "why-devrel-matters"
+          ]
+        },
+        {
+          "group": "Developer Advocacy",
+          "pages": [
+            "public-speaking",
+            "content-creation",
+            "developer-champions"
+          ]
+        },
+        {
+          "group": "Developer Experience",
+          "pages": [
+            "tooling-dx-audits",
+            "documentation-best-practices",
+            "feedback-collection"
+          ]
+        },
+        {
+          "group": "Community Building",
+          "pages": [
+            "online-community-management",
+            "events-and-meetups",
+            "content-and-knowledge-sharing"
+          ]
+        },
+        {
+          "group": "Measuring DevRel Impact",
+          "pages": [
+            "kpi-and-okrs",
+            "qualitative-vs-quantitative-metrics",
+            "reporting-to-leadership"
+          ]
+        },
+        {
+          "group": "Career Pathways in DevRel",
+          "pages": [
+            "roles-in-devrel",
+            "skills-and-tools",
+            "breaking-into-devrel"
+          ]
+        },
+        {
+          "group": "Case Studies and Stories",
+          "pages": [
+            "real-life-examples",
+            "lessons-learned",
+            "tools-we-love"
+          ]
+        },
+        {
+          "group": "Resources and Further Reading",
+          "pages": [
+            "books",
+            "podcast-and-youtube",
+            "communities-to-join",
+            "courses"
+          ]
+        },
+        {
+          "group": "Community Authors",
+          "pages": [
+            "list-of-contributors"
+          ]
+        },
+        {
+          "group": "Deep Dives",
+          "pages": [
+            "career-pathways",
+            "case-studies",
+            "resources",
+            "community-authors"
+          ]
+        },
+        {
+          "group": "Jobs",
+          "pages": [
+            "jobs-in-devrel",
+            "job-search-strategies",
+            "interview-guide",
+            "project-portfolio-examples"
+          ]
+        },
+        {
+          "group": "Dx Mentorship Sessions",
+          "pages": [
+            "dx-mentorship-sessions"
+          ]
+        },
+        {
+          "group": "Create Winning DevRel Resumes",
+          "pages": [
+            "devrel-resumes",
+            "how-to-structure-your-devrel-resume"
+          ]
+        },
+        {
+          "group": "LinkedIn and Personal Branding",
+          "pages": [
+            "linkedin-and-personal-branding"
           ]
         }
       ]
-    },
-    {
-      "tab": "Guides",
-      "groups": [
-        {
-          "group": "Work with Thally",
-          "pages": [
-            "guides/create-a-site",
-            "guides/work-with-the-cli",
-            "guides/connect-ai-tools"
-          ]
-        }
-      ]
-    },
-    {
-      "tab": "API Reference",
-      "groups": [
-        {
-          "group": "Overview",
-          "pages": [
-            "api/introduction",
-            "api/authentication"
-          ]
-        }
-      ],
-      "api": {
-        "source": "openapi.yaml"
-      }
     },
     {
       "tab": "Changelog",
       "href": "/changelog"
     }
-  ],
-  "ai": {
-    "chat": true
-  }
+  ]
 }
