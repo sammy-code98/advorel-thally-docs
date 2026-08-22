@@ -160,12 +160,12 @@ const brandPresets: Record<BrandPresetKey, BrandConfig> = {
 const brandPreset: BrandPresetKey = 'primary'
 
 export const siteConfig: SiteConfig = {
-  name: "Advorel",
+  name: "DX",
   description: "DevRel Documentation and Guide",
   repoUrl: "https://github.com/Tabintel/dxdevrel_guides.git",
   links: [
-    { label: "Get started", href: "/quickstart" },
-    { label: "Changelog", href: "/changelog" },
+    // { label: "Get started", href: "/quickstart" },
+    // { label: "Changelog", href: "/changelog" },
   ],
   brand: brandPresets[brandPreset],
   brandPreset,
