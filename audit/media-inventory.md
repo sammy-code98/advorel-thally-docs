@@ -6,13 +6,13 @@ This internal inventory records the five photographs supplied and named by the p
 | --- | --- | --- | --- | --- | --- | --- |
 | `dxmentorship-devrel-guide 2/assets/images/audit/Ekemini_Mojo_Africa.jpg` | Ekemini Samuel presenting beside a Mojo programming slide | Mojo Africa; exact session date pending confirmation | Project owner | Supplied for this guide | Ekemini Samuel presenting a Mojo programming session at a Mojo Africa event | Public Speaking; Developer Champions; Mojo Africa case study |
 | `dxmentorship-devrel-guide 2/assets/images/audit/Faith_DevFest 2024.jpg` | Faith Ayoola Oni speaking at DevFest 2024 | DevFest 2024; session title and venue pending confirmation | Project owner | Supplied for this guide | Faith Ayoola Oni speaking during a DevFest 2024 session | Public Speaking |
-| `dxmentorship-devrel-guide 2/assets/images/audit/Faith.jpg` | Faith Ayoola Oni addressing attendees in a computer lab | Event, location, and date pending confirmation | Project owner | Supplied for this guide | Faith Ayoola Oni addressing attendees during a technical session | Reserved until event context is confirmed |
+| `dxmentorship-devrel-guide 2/assets/images/audit/Faith.jpg` | Faith Ayoola Oni addressing attendees during a technical session | Event, location, and date pending confirmation | Project owner | Supplied for this guide | Faith Ayoola Oni delivering a live technical session | Content Creation |
 | `dxmentorship-devrel-guide 2/assets/images/audit/Joy_DevFest.jpg` | Joy Ndukwe holding a microphone at DevFest | DevFest; year, session title, and venue pending confirmation | Project owner | Supplied for this guide | Joy Ndukwe speaking at a DevFest event | Public Speaking |
 | `dxmentorship-devrel-guide 2/assets/images/audit/Faith_DevFest_PanelSession.jpg` | Faith Ayoola Oni participating in a three-person panel | DevFest 2024 panel; title and venue pending confirmation | Project owner | Supplied for this guide | Faith Ayoola Oni participating in a DevFest 2024 panel session | Public Speaking |
 
 ## Publication rule
 
-Three photographs with enough context are published under `public/images/community/`. Only the requested DevFest panel image is used for Faith. `Faith.jpg` and `Faith_DevFest 2024.jpg` remain unpublished. Add a photographer credit when that information becomes available.
+Four photographs are published under `public/images/community/`. Faith's panel image supports Public Speaking, while her live technical-session image supports Content Creation. `Faith_DevFest 2024.jpg` remains unpublished. Add a photographer credit when that information becomes available.
 
 ## Tool logo sources
 
