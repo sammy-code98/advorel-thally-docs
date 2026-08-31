@@ -170,6 +170,12 @@
       "weight": ["500", "600", "700"]
     }
   },
+  "customScripts": [
+    {
+      "src": "/custom/logo-only-header.js",
+      "strategy": "beforeInteractive"
+    }
+  ],
   "markdown": {
     "enabled": true
   }
