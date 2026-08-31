@@ -14,6 +14,8 @@
  */
 
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import { apiReferenceConfig } from '@/config/api-reference'
+import { getDocEntries } from '@/data/docs'
 import { resetContentSourceForTests } from '@/lib/content-source'
 import { generateStaticParams as rootParams } from '../../app/(docs)/[[...slug]]/page'
 import { generateStaticParams as localeParams } from '../../app/(docs)/[locale]/[[...slug]]/page'
@@ -47,12 +49,18 @@ describe('doc route generateStaticParams', () => {
   })
 
   // Guards the guard: an unconditional `return []` would satisfy the assertions
-  // above while silently dropping SSG for self-hosted and OSS builds. Only the
-  // two unconditional routes are asserted here — [locale] legitimately yields an
-  // empty list in either mode when docs.json configures no secondary locale.
+  // above while silently dropping SSG for self-hosted and OSS builds. A row only
+  // belongs here when this repo's docs.json actually gives the route something to
+  // prerender — [locale] legitimately yields an empty list in either mode when no
+  // secondary locale is configured, and api/ does the same when the site
+  // configures neither an OpenAPI spec nor MDX pages under api/.
+  const hasApiContent =
+    apiReferenceConfig.specs.length > 0 ||
+    getDocEntries().some((doc) => doc.slug[0] === 'api' && doc.slug.length > 1)
+
   it.each([
     { name: '[[...slug]]', generateStaticParams: rootParams },
-    { name: 'api/[[...slug]]', generateStaticParams: apiParams },
+    ...(hasApiContent ? [{ name: 'api/[[...slug]]', generateStaticParams: apiParams }] : []),
   ])('$name still prerenders under the default filesystem source', async ({ generateStaticParams }) => {
     await expect(generateStaticParams()).resolves.not.toEqual([])
   })
