@@ -1,6 +1,164 @@
 ---
 title: "Content Creation"
-description: ""
+description: "A practical workflow for creating technical DevRel content that starts with developer problems, uses working examples, and reaches people where they already learn."
+icon: "file"
 ---
 
+DevRel content sits between two needs.
 
+Developers want a clear answer to a real problem. The company wants more people to understand, try, and succeed with its product.
+
+The best content does both without turning into an advert. It teaches something useful first.
+
+## Start with the problem, not the content format
+
+Do not begin with, “We need a blog post this week.” Begin with, “What are developers trying to do, and where are they getting stuck?”
+
+A useful topic can come from two places at the same time:
+
+- **Search and problem discovery:** recurring technical queries, error messages, integration questions, and tasks developers are actively searching for.
+- **Community requests:** repeated questions from Discord, Slack, GitHub issues, support conversations, events, office hours, or customer calls.
+
+Those sources complement each other. Search shows demand at scale. Community conversations give you language, context, and the frustrating details that keyword data often misses.
+
+## Balance product goals with developer value
+
+It is reasonable for a DevRel team to support product adoption. The mistake is assuming every piece of content needs to sound promotional.
+
+If a product feature solves a real engineering problem, show the problem, the trade-offs, the implementation, and the result. Let the usefulness of the example carry the product story.
+
+## Write for the reader you actually have
+
+A beginner and a senior engineer may search for the same topic but need very different pages.
+
+### For someone getting started
+
+- show prerequisites;
+- use a small working example;
+- explain setup steps explicitly;
+- include conceptual diagrams when they save the reader from building the wrong mental model;
+- show common errors and how to recover from them.
+
+### For an experienced engineer
+
+- get to the implementation faster;
+- discuss trade-offs and constraints;
+- include performance considerations and edge cases;
+- show system architecture and production concerns;
+- explain why one approach was chosen over another.
+
+Do not add a long generic introduction just because the topic is advanced. Experienced readers usually want you to respect their time.
+
+## A four-step production workflow
+
+### 1. Define the reader and problem
+
+Write down the question this piece answers, the intended reader, and what success looks like after they finish it.
+
+### 2. Validate the technical path firsthand
+
+Run the code. Test the command. Build the sample. Start from a clean environment when possible.
+
+A polished article with broken code loses trust quickly.
+
+### 3. Draft the explanation and visuals
+
+Use headings that describe actions or questions the reader cares about. Add diagrams when the relationship between components is harder to explain in words. Keep examples small enough to understand but realistic enough to reuse.
+
+### 4. Review for technical and editorial quality
+
+Check syntax, links, versions, assumptions, and setup steps. Then read the prose as a person, not a linter: does it sound like something you would actually say while helping another developer?
+
+## Maintain sample code like product code
+
+Technical content ages.
+
+SDKs change. Dependencies introduce breaking releases. APIs deprecate fields. Authentication flows move. A tutorial can rank well in search long after its sample repository stops working.
+
+Where the value justifies it:
+
+- test important sample repositories regularly;
+- add CI to catch build failures;
+- pin or document versions when reproducibility matters;
+- assign ownership for high-traffic tutorials;
+- add a visible last-reviewed date for fast-changing topics.
+
+## Distribution is part of the work
+
+Publishing the canonical article is only the first step. Developers learn in different places, so adapt the same useful idea to the channel instead of pasting the same post everywhere.
+
+| Channel | Good use |
+| --- | --- |
+| Primary blog / docs | Canonical explanation, complete code, durable SEO value |
+| Dev.to / Hashnode | Adapted or canonical cross-posts for developer-native discovery |
+| Discord / Slack | A concise solution, link, question, or discussion prompt |
+| X / LinkedIn | One takeaway, diagram, code snippet, short video, or story that points to the deeper resource |
+| Video / livestream | Demonstrations, visual debugging, walkthroughs, or interactive teaching |
+
+## Measure the whole journey
+
+No single metric tells you whether technical content worked.
+
+| Category | Example signals | What it can tell you |
+| --- | --- | --- |
+| Reach | Page views, unique visitors, search ranking | Whether people can discover the topic |
+| Technical engagement | Repo clones/forks/stars, watch time, example usage | Whether people are going deeper than the headline |
+| Product activation | API signups, SDK downloads, successful onboarding steps | Whether the content helped people try or use the product |
+| Community signal | Questions, comments, Discord feedback, shares | What was clear, confusing, or worth discussing |
+
+Be careful with attribution. A page view is not automatically product adoption, and a signup is not automatically caused by a single article.
+
+## Turn repeated questions into a content system
+
+A strong DevRel content program listens continuously:
+
+```text
+Developer question
+      ↓
+Repeated pattern
+      ↓
+Content / docs / demo / FAQ
+      ↓
+Distribution
+      ↓
+Feedback + product signal
+      ↓
+Next improvement
+```
+
+This is more durable than choosing topics from a blank editorial calendar every week.
+
+## Examples from our contributors
+
+These published examples show different ways contributors turn technical knowledge and community experience into useful content:
+
+Faith Ayoola Oni's technical session shows that content is not limited to articles and videos. A live explanation can help an audience ask questions, test its understanding, and connect a technical idea to a practical task.
+
+![Faith Ayoola Oni delivering a live technical session](/images/community/faith-technical-session.jpg)
+
+- Ekemini Samuel's [What Is Mojo?](https://dev.to/envitab/what-is-mojo-2oip) introduces an unfamiliar technology by connecting it to problems developers already understand.
+- Ekemini's [How to Build a Real-time AI Gym Coach with Vision Agents](https://www.freecodecamp.org/news/how-to-build-a-real-time-ai-gym-coach-with-vision-agents/) uses a complete project to teach a technically ambitious workflow.
+- Ekemini's [Enterprise AI Governance: Governing LLM Traffic at Scale with an AI Gateway](https://dev.to/envitab/enterprise-ai-governance-governing-llm-traffic-at-scale-with-an-ai-gateway-564j) explains an enterprise problem through architecture and implementation choices.
+- Abimbola Adedotun Samuel's [freeCodeCamp tutorials](https://www.freecodecamp.org/news/author/Dotcodes/) focus on concrete NestJS tasks such as file uploads and JWT authentication.
+- Samuel Uzor's [DevRel Demystified: How to Get Started as a Beginner](https://samueluzor.hashnode.dev/devrel-demystified-how-to-get-started-as-a-beginner) gives an early-career reader a clear entry point into DevRel.
+- Faith Ayoola Oni's [Getting Started with Daytona](https://dev.to/ayoola/getting-started-with-daytona-a-beginners-guide-to-development-environment-management-dem-1fi1) starts with a recognizable development-environment problem and walks through a practical solution.
+- Joy Ndukwe's [Beyond gm, gm: What's Community?](https://joyndukwe.medium.com/beyond-gm-gm-whats-community-fef7f612f047) uses conversational writing to make an abstract community concept concrete.
+
+Each example has a different format and audience. What they share is a clear reader problem and a useful path through it. We have not attached traffic or adoption claims because those outcomes have not been supplied and verified.
+
+## Content QA checklist
+
+- [ ] We can state the developer problem in one sentence.
+- [ ] The intended reader is clear.
+- [ ] Code, commands, and configuration have been tested where possible.
+- [ ] The piece gives the reader something useful before asking for product attention.
+- [ ] Examples are real or clearly labeled.
+- [ ] The writing sounds natural when read aloud.
+- [ ] The canonical page and repurposed posts point to one source of truth.
+- [ ] We know how this content will be maintained.
+
+## Related pages
+
+- [Public Speaking](/public-speaking)
+- [Documentation Best Practices](/documentation-best-practices)
+- [Tools We Love](/tools-we-love)

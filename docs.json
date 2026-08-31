@@ -5,6 +5,7 @@
       "groups": [
         {
           "group": "Welcome and Introduction",
+          "icon": "book-open",
           "pages": [
             "introduction",
             "what-is-dxmentorship",
@@ -14,6 +15,7 @@
         },
         {
           "group": "What is Developer Relations",
+          "icon": "lightbulb",
           "pages": [
             "what-is-devrel",
             "definitions-and-origins",
@@ -23,6 +25,7 @@
         },
         {
           "group": "Developer Advocacy",
+          "icon": "message",
           "pages": [
             "developer-advocacy",
             "public-speaking",
@@ -32,6 +35,7 @@
         },
         {
           "group": "Developer Experience",
+          "icon": "wrench",
           "pages": [
             "developer-experience",
             "tooling-dx-audits",
@@ -41,6 +45,7 @@
         },
         {
           "group": "Community Building",
+          "icon": "users",
           "pages": [
             "community-building",
             "online-community-management",
@@ -50,6 +55,7 @@
         },
         {
           "group": "Measuring DevRel Impact",
+          "icon": "check-circle",
           "pages": [
             "measuring-devrel",
             "kpi-and-okrs",
@@ -59,6 +65,7 @@
         },
         {
           "group": "Career Pathways in DevRel",
+          "icon": "arrow-right",
           "pages": [
             "roles-in-devrel",
             "skills-and-tools",
@@ -67,6 +74,7 @@
         },
         {
           "group": "Case Studies and Stories",
+          "icon": "book-open",
           "pages": [
             "real-life-examples",
             "lessons-learned",
@@ -75,6 +83,7 @@
         },
         {
           "group": "Resources and Further Reading",
+          "icon": "globe",
           "pages": [
             "books",
             "podcast-and-youtube",
@@ -84,21 +93,30 @@
         },
         {
           "group": "Community Authors",
+          "icon": "users",
           "pages": [
-            "list-of-contributors"
-          ]
-        },
-        {
-          "group": "Deep Dives",
-          "pages": [
-            "career-pathways",
-            "case-studies",
-            "resources",
             "community-authors"
           ]
         },
         {
+          "group": "Organizations",
+          "icon": "users",
+          "pages": [
+            "advorel"
+          ]
+        },
+        {
+          "group": "Deep Dives",
+          "icon": "search",
+          "pages": [
+            "career-pathways",
+            "case-studies",
+            "resources"
+          ]
+        },
+        {
           "group": "Jobs",
+          "icon": "search",
           "pages": [
             "jobs-in-devrel",
             "job-search-strategies",
@@ -107,13 +125,15 @@
           ]
         },
         {
-          "group": "Dx Mentorship Sessions",
+          "group": "DXMentorship Sessions",
+          "icon": "users",
           "pages": [
             "dx-mentorship-sessions"
           ]
         },
         {
           "group": "Create Winning DevRel Resumes",
+          "icon": "file",
           "pages": [
             "devrel-resumes",
             "how-to-structure-your-devrel-resume"
@@ -121,6 +141,7 @@
         },
         {
           "group": "LinkedIn and Personal Branding",
+          "icon": "user",
           "pages": [
             "linkedin-and-personal-branding"
           ]
@@ -130,6 +151,29 @@
     {
       "tab": "Changelog",
       "href": "/changelog"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/list-of-contributors",
+      "destination": "/community-authors",
+      "permanent": true
+    }
+  ],
+  "fonts": {
+    "body": {
+      "family": "JetBrains Mono",
+      "weight": ["400", "500", "600", "700"]
+    },
+    "heading": {
+      "family": "JetBrains Mono",
+      "weight": ["500", "600", "700"]
+    }
+  },
+  "customScripts": [
+    {
+      "src": "/custom/logo-only-header.js",
+      "strategy": "beforeInteractive"
     }
   ],
   "markdown": {
