@@ -1,6 +1,118 @@
 ---
 title: "Documentation Best Practices"
-description: ""
+description: "How DevRel teams can treat documentation as part of the developer experience, including practical guidance for using AI without giving up accuracy or empathy."
+icon: "file"
 ---
 
+Documentation is part of the product experience.
 
+If the API is good but the setup guide is confusing, the developer still has a bad experience. If the tutorial looks polished but the commands fail, the developer still loses time.
+
+Good documentation helps somebody move from “I think this can solve my problem” to “I got it working” with as little unnecessary friction as possible.
+
+## Best practices for using AI as a Developer Advocate
+
+AI can help DevRel teams research, organize information, create first drafts, support communities, and spot patterns across a large amount of feedback.
+
+But “use AI” is not a documentation strategy.
+
+The useful question is: **where is the developer losing time or getting confused, and can AI help us remove that friction without making the experience less trustworthy?**
+
+### Start with the developer, not the AI
+
+It is easy to find a new AI tool and then go looking for something to automate. Reverse the order.
+
+Ask:
+
+- Where are developers getting stuck?
+- Which questions keep coming up?
+- Which parts of the docs are confusing?
+- What takes the team too long to explain repeatedly?
+- What feedback are developers giving us again and again?
+
+Then decide whether AI is actually useful for that problem.
+
+### Use AI to reduce repetitive work
+
+DevRel involves a lot of work that is valuable but repetitive: summarizing community discussions, organizing feedback, turning recordings into draft notes, grouping survey responses, drafting FAQs, or identifying repeated questions.
+
+AI can shorten that first pass.
+
+For example, instead of manually reading hundreds of community messages just to count recurring themes, you can use AI to group the messages and surface candidate patterns. A person should still review the source conversations before turning those patterns into product decisions or published guidance.
+
+### Do not outsource developer empathy
+
+A tutorial can be technically correct and still be frustrating.
+
+AI does not experience the onboarding flow the way a first-time developer does. It can explain what a parameter means while missing the fact that the prerequisite three sections earlier is unclear.
+
+Before you publish AI-assisted documentation:
+
+1. Run the code.
+2. Follow the instructions from the beginning.
+3. Try the examples in a fresh environment where possible.
+4. Look for the point where a new developer might ask, “Wait, why am I doing this?”
+5. Fix that point.
+
+Developer experience is experienced by people, so human judgment stays in the loop.
+
+### Treat generated content as a draft, not evidence
+
+AI is useful for getting from a blank page to something you can inspect. It is not proof that a command, API parameter, metric, or product behavior is correct.
+
+A practical workflow is:
+
+```text
+AI-assisted draft
+      ↓
+Source review
+      ↓
+Technical test
+      ↓
+Firsthand context
+      ↓
+Human edit
+      ↓
+Publish
+```
+
+Add the things a generic model cannot know reliably: the current product behavior, your team's experience, real support questions, a contributor's story, or the specific reason a design choice was made.
+
+### Use AI to listen to the community
+
+One of the most useful AI applications in DevRel may be **community intelligence**, not content generation.
+
+Developers constantly produce signals:
+
+- “I don't understand this section.”
+- “The setup doesn't work.”
+- “Can you show an example?”
+- “Is there a tutorial for this?”
+- “Why does this error happen?”
+
+When those signals repeat, they point to something worth investigating.
+
+AI can help cluster the conversations and surface patterns. DevRel can then take the evidence back to documentation, product, engineering, or support.
+
+That is a stronger role than simply producing more content. It helps the organization understand developers better.
+
+### Keep the relation in Developer Relations
+
+Automation can make some work faster, but speed is not the only goal.
+
+Sometimes a developer needs a person who understands the problem, asks the next useful question, and knows when to bring in somebody from engineering, product, or support.
+
+The principle for this guide is simple:
+
+> Use AI when it helps create a better developer experience: not just because it can produce more output.
+
+## Documentation QA checklist
+
+- [ ] The page solves a specific developer need.
+- [ ] Prerequisites are visible before the reader needs them.
+- [ ] Commands, code, and links are tested where possible.
+- [ ] Version-sensitive instructions are current.
+- [ ] Examples explain *why*, not only *what*.
+- [ ] AI-assisted claims have been checked against source material or the real product.
+- [ ] A first-time reader can complete the path without hidden context.
+- [ ] The page has a clear owner or maintenance path when it can become stale.

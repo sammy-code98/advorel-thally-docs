@@ -1,6 +1,155 @@
 ---
 title: "Public Speaking"
-description: ""
+description: "How Developer Advocates can choose speaking opportunities, structure technical talks, run safer demos, connect with an audience, and measure what happens after the talk."
+icon: "message"
 ---
 
+Public speaking is one of the most useful ways a Developer Advocate can teach, build trust, and help more developers understand a product or idea.
 
+That might mean a five-minute lightning talk at a local meetup. It might mean a hands-on workshop, a webinar, a conference session, or a keynote. The format changes, but the job is similar: **help the audience leave with something they can understand and use.**
+
+A good technical talk has enough depth to be useful, but it does not make the audience work harder than necessary to follow the idea.
+
+## Choose the right speaking opportunity
+
+Not every event is useful for the same reason. Start with the audience and what you want them to be able to do afterward.
+
+- **Conferences** work well for deeper technical talks, case studies, and advanced tutorials.
+- **Local meetups and user groups** are good places to test a new idea, meet developers directly, and learn what questions people actually have.
+- **Lightning talks (5 to 10 minutes)** work best when you have one idea to teach, one problem to show, or one tool to introduce.
+- **Webinars and virtual workshops** are useful for product walkthroughs, structured tutorials, and live Q&A.
+
+You can find speaking opportunities through CFP platforms such as Sessionize, developer communities, conference mailing lists, and speaker calls shared on LinkedIn or X.
+
+## Pick a topic people will care about
+
+The strongest technical talks usually sit at the intersection of three things:
+
+1. **A real developer problem.** What is difficult, confusing, slow, expensive, or error-prone?
+2. **Something you understand well enough to teach.** Firsthand experience beats a summary of somebody else's documentation.
+3. **A useful takeaway.** What can the audience try when they get home?
+
+Try not to turn the talk into a company sales pitch. If you represent a product, it is fine to use that product. But lead with the developer's problem, the engineering choices, the code, and what you learned.
+
+## A practical 30-minute structure
+
+| Time | Section | What to do |
+| --- | --- | --- |
+| 0:00 to 2:00 | Hook and problem | Introduce yourself briefly, state the problem clearly, and tell people what they will learn. |
+| 2:00 to 5:00 | Context | Explain why the problem matters and the environment where you ran into it. |
+| 5:00 to 20:00 | Core ideas | Teach 3 to 4 main points with real examples, diagrams, code, or a walkthrough. |
+| 20:00 to 27:00 | Implementation and results | Show what worked, what failed, useful metrics, and the architecture or product lessons. |
+| 27:00 to 30:00 | Takeaways and Q&A | Recap the few things worth remembering, share resources, and take questions. |
+
+Do not treat this timing as a rule. It is a starting point. A workshop, keynote, panel, or live-coding session needs a different shape.
+
+## Make live demos boringly reliable
+
+Live demos can be great because people get to see the product work. They can also fail for reasons that have nothing to do with your talk: conference Wi-Fi, authentication, rate limits, dependency changes, or the one environment variable you forgot.
+
+Have more than one way to tell the same story.
+
+### Three-level fallback
+
+1. **Live demo**: your primary path, with the environment already staged.
+2. **Scripted or deterministic demo**: a local path you can run without depending on several external systems.
+3. **Pre-recorded video or code walkthrough**: the safety net that lets you keep teaching even if the environment fails completely.
+
+### Before you go on stage
+
+- Pull container images and install dependencies ahead of time.
+- Seed local databases or test data.
+- Verify API keys and authentication.
+- Make the terminal readable from the back of the room.
+- Keep a reset script or clean starting state.
+- Have important URLs, snippets, and commands ready instead of typing everything from memory.
+
+### If the demo fails
+
+Do not spend the rest of the talk debugging it.
+
+Try once, decide quickly, and switch to the fallback. If the failure teaches something useful, explain the edge case or how you would debug it in production. Then keep moving.
+
+## Handle Q&A like part of the talk
+
+Q&A can reveal what developers actually care about, so treat it as signal rather than an afterthought.
+
+- Tell people how much Q&A time you have.
+- Repeat each audience question into the microphone before answering it.
+- If you do not know the answer, say so. Explain what you *do* know or how you would find the answer.
+- Capture questions you could not answer. They are potential documentation updates, tutorials, FAQs, or product feedback.
+
+## The talk is not over when you leave the stage
+
+A good talk can keep working for weeks or months after the event.
+
+**Immediately afterward:** stay around if you can, talk to people, capture questions, and make it easy for attendees to find you or the resources.
+
+**Within 24 to 48 hours:** share the slides, sample repository, references, or recording when they are available.
+
+**Within a week:** turn the best part of the talk into something reusable: a tutorial, article, short video, code example, FAQ, or documentation improvement.
+
+## Measure more than applause
+
+A full room feels good, but it does not tell you whether the talk helped developers.
+
+Depending on the goal, useful signals can include:
+
+- visits to the documentation or landing page linked from the talk;
+- repository stars, forks, clones, or sample-project usage;
+- SDK downloads or signups that can reasonably be attributed to the event;
+- questions and discussion after the session;
+- views of the recording or slides over time;
+- product feedback that came directly from conversations at the event.
+
+Do not force attribution when you cannot support it. Sometimes the most valuable outcome is a repeated question that exposes a documentation gap or product problem.
+
+## From practitioner experience
+
+### Ekemini and Mojo Africa
+
+Ekemini Samuel's work with Mojo Africa shows how speaking can support a wider developer-education system. The [Mojo Africa 2026 event](https://lnkd.in/p/erXYFN3z) and public [Mojo Africa meetup page](https://luma.com/mojo-africa) identify Ekemini as a host and describe a community-led session in Uyo about the role of Mojo in AI infrastructure.
+
+![Ekemini Samuel presenting a Mojo programming session at a Mojo Africa event](/images/community/ekemini-mojo-africa.jpg)
+
+The project-provided event record for May 2, 2026 describes a mixed audience of developers, students, technology enthusiasts, and newcomers. That mix changes how you prepare. A useful session cannot assume that everybody already understands Mojo, MAX, GPU programming, or the infrastructure problems behind them.
+
+The practical pattern is:
+
+1. Start with the infrastructure problem before introducing the technology.
+2. Explain technical terms in layers so newcomers can follow without slowing experienced developers.
+3. Use demonstrations and concrete examples to connect the idea to real work.
+4. Treat audience questions as feedback about the product, documentation, and explanation.
+5. Turn the session into follow-up material such as a recap, recording, article, workshop, or community discussion.
+
+This is what makes speaking useful in DevRel. The talk is one part of an education and feedback loop, not a one-off performance.
+
+### Faith at DevFest
+
+The project photographs document Faith Ayoola Oni speaking and participating in a panel at DevFest 2024. They show two useful public-speaking formats: a focused presentation and a shared panel discussion. The session titles and venue are not recorded, so this guide does not assign topics or outcomes to the photographs.
+
+![Faith Ayoola Oni participating in a DevFest 2024 panel session](/images/community/faith-devfest-panel-session.jpg)
+
+### Joy at DevFest
+
+The project photograph documents Joy Ndukwe speaking at DevFest. The exact year, session title, and topic are not recorded, so the image is presented only as evidence of speaking experience.
+
+![Joy Ndukwe speaking at a DevFest event](/images/community/joy-devfest.jpg)
+
+## A simple speaker checklist
+
+- [ ] I know who the audience is.
+- [ ] I can explain the problem in one or two sentences.
+- [ ] The talk teaches more than it promotes.
+- [ ] My examples and code have been tested.
+- [ ] I have a fallback for every live demo.
+- [ ] People can read the terminal and diagrams from the back of the room.
+- [ ] I know what resources I will share afterward.
+- [ ] I have a way to capture questions and feedback.
+- [ ] I know which signals matter for this talk's goal.
+
+## Related pages
+
+- [Content Creation](/content-creation)
+- [Developer Champions](/developer-champions)
+- [Case Studies](/case-studies)

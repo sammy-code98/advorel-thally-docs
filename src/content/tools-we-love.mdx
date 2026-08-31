@@ -1,6 +1,291 @@
 ---
 title: "Tools We Love"
-description: ""
+description: "A small, practical DevRel toolkit organized around real jobs: research, documentation, visuals, video, community, and collaboration."
+icon: "heart"
 ---
 
+There are hundreds of tools a DevRel team *could* use.
 
+That is not the same as having a good stack.
+
+This page is deliberately opinionated in a different way: instead of trying to list everything, we keep a small set of tools that solve recurring DevRel problems well.
+
+The rule is simple:
+
+> **Recommend a tool because of the job it helps us do, not because the tool is popular.**
+
+## Claude: for thinking with a large amount of material
+
+<ToolLink name="Claude" href="https://claude.ai/" logo="/images/tools/claude.ico" />
+
+Useful for:
+
+- research planning;
+- comparing source material;
+- outlining;
+- first drafts;
+- turning rough notes into structure;
+- summarizing internal material;
+- analyzing surveys or feedback;
+- brainstorming examples;
+- reviewing a document for gaps.
+
+What we like:
+
+It can shorten the distance between a pile of material and a useful first pass.
+
+What to watch:
+
+A fluent answer is not automatically a correct one. For technical documentation, product behavior, code, metrics, or quotations, check the source.
+
+**Good DevRel workflow:**
+
+```text
+Source material
+      ↓
+AI-assisted synthesis
+      ↓
+Human review
+      ↓
+Technical verification
+      ↓
+Firsthand context
+      ↓
+Publish
+```
+
+## Recall: for keeping research from disappearing
+
+<ToolLink name="Recall" href="https://www.recall.it/" logo="/images/tools/recall.ico" />
+
+DevRel people consume a lot:
+
+- articles;
+- product docs;
+- conference talks;
+- YouTube videos;
+- research papers;
+- podcasts;
+- community threads.
+
+Recall is useful as a personal AI knowledge base that can save and summarize that material, organize it, connect related ideas, and make the library searchable.
+
+A good use case is preparing for a technical topic over time.
+
+Instead of keeping forty browser tabs open, save useful sources and build a research collection you can return to.
+
+What we like:
+
+The value is not just summarization. It is remembering where useful ideas came from.
+
+What to watch:
+
+Always return to the original source before quoting or making an important factual claim.
+
+## Canva: for fast visual communication
+
+<ToolLink name="Canva" href="https://www.canva.com/" logo="/images/tools/canva.ico" />
+
+Useful for:
+
+- conference slides;
+- event graphics;
+- diagrams;
+- social assets;
+- workshop worksheets;
+- thumbnails;
+- branded templates;
+- simple video presentations.
+
+What we like:
+
+A non-designer can move from idea to a clear visual quickly, and teams can collaborate without a heavy design workflow.
+
+What to watch:
+
+Templates can make everything look polished while hiding a weak message.
+
+Start with the idea. Then design it.
+
+## GitHub: for collaborative documentation and examples
+
+<ToolLink name="GitHub" href="https://github.com/" logo="/images/tools/github.ico" />
+
+Useful for:
+
+- docs-as-code;
+- sample repositories;
+- issue tracking;
+- contributions;
+- pull requests;
+- review;
+- change history;
+- open-source collaboration.
+
+What we like:
+
+A pull request gives a documentation change a reviewable history: what changed, why, who reviewed it, and what discussion happened.
+
+That is especially useful for a community-built guide like this one.
+
+## Mintlify: for developer documentation
+
+<ToolLink name="Mintlify" href="https://www.mintlify.com/" logo="/images/tools/mintlify.ico" />
+
+Useful for:
+
+- documentation sites;
+- API references;
+- rich MDX content;
+- search;
+- examples;
+- developer onboarding;
+- docs maintenance workflows.
+
+What we like:
+
+It is designed around developer documentation rather than a generic website CMS.
+
+For this guide, it is one of the publishing layers while the repository stays the source of truth.
+
+## Docusaurus: when you want an open-source docs framework
+
+<ToolLink name="Docusaurus" href="https://docusaurus.io/" logo="/images/tools/docusaurus.png" />
+
+Useful for teams that want:
+
+- Markdown/MDX;
+- versioning;
+- sidebars;
+- custom React components;
+- more control over the frontend;
+- an open-source documentation stack.
+
+What we like:
+
+The content stays close to a normal repository and can be extended deeply.
+
+The trade-off is that more control usually means more implementation and maintenance responsibility.
+
+## Mermaid: for diagrams that live with the content
+
+<ToolLink name="Mermaid" href="https://mermaid.js.org/" logo="/images/tools/mermaid.svg" />
+
+Useful for:
+
+- architecture flows;
+- lifecycle diagrams;
+- decision flows;
+- journeys;
+- process maps.
+
+What we like:
+
+The diagram source can live in the same file as the explanation, which makes small changes easier to review.
+
+Use it when a relationship is easier to see than to describe.
+
+## OBS Studio: for reliable recording and livestreaming
+
+Useful for:
+
+- screen recording;
+- livestreams;
+- conference/community broadcasts;
+- multi-scene demos;
+- camera + screen layouts.
+
+What we like:
+
+It is flexible and well suited to technical demos where you need control over inputs, scenes, and recording.
+
+What to watch:
+
+Do not build a complicated scene setup for a simple five-minute tutorial.
+
+## Descript: for editing by working with the transcript
+
+Useful for:
+
+- product demos;
+- tutorials;
+- interviews;
+- clips;
+- captions;
+- repurposing longer recordings.
+
+What we like:
+
+Transcript-led editing makes video editing feel closer to editing written content.
+
+That is useful for DevRel teams that create a lot of spoken technical content but do not want every edit to become a full production project.
+
+## Your phone: still underrated
+
+For:
+
+- event recap clips;
+- quick explainers;
+- speaker practice;
+- short community updates;
+- recording a first version before investing in production.
+
+A useful idea recorded clearly is better than a perfect studio setup that never ships.
+
+## What is intentionally not on this page?
+
+Everything.
+
+This is not a directory.
+
+A tool should earn its place by helping with a recurring workflow.
+
+When a contributor wants to add a tool, include:
+
+1. the job it solves;
+2. when we actually use it;
+3. what it replaces;
+4. one reason we would *not* use it;
+5. the official link.
+
+That keeps this page useful.
+
+## A small default stack
+
+| Need | Good starting point |
+| --- | --- |
+| Research/synthesis | Claude |
+| Knowledge library | Recall |
+| Source/review | GitHub |
+| Developer docs | Mintlify |
+| Open-source docs framework | Docusaurus |
+| Diagrams | Mermaid |
+| Visual design | Canva |
+| Recording/livestreaming | OBS Studio |
+| Video editing | Descript |
+
+These are starting points, not endorsements for every team.
+
+## Tool-evaluation checklist
+
+- [ ] We have a repeated problem this tool solves.
+- [ ] The team knows what it replaces.
+- [ ] The workflow remains understandable if the tool goes away.
+- [ ] Security/privacy requirements are clear.
+- [ ] The cost is justified by actual usage.
+- [ ] It integrates with the team's source of truth.
+- [ ] It does not create unnecessary duplicate content.
+- [ ] Somebody owns the workflow.
+- [ ] We review the stack periodically.
+
+## Official resources
+
+- [Claude / Anthropic documentation](https://docs.anthropic.com/)
+- [Recall](https://www.recall.it/about)
+- [Canva Help Center](https://www.canva.com/help/)
+- [GitHub Docs](https://docs.github.com/)
+- [Mintlify](https://www.mintlify.com/use-cases/developer-documentation)
+- [Docusaurus](https://docusaurus.io/docs/docs-introduction)
+- [Mermaid](https://mermaid.js.org/)
+- [OBS Studio](https://obsproject.com/kb)
+- [Descript](https://www.descript.com/)

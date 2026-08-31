@@ -1,6 +1,384 @@
 ---
 title: "Reporting to Leadership"
-description: ""
+description: "How DevRel teams can turn activity, developer evidence, and business context into clear leadership reporting that supports decisions."
+icon: "file"
 ---
 
+A leadership report is not a longer version of your DevRel dashboard.
 
+It has a different job.
+
+Your team may care about every tutorial, event, support theme, community thread, documentation fix, and developer conversation. Leadership usually needs a smaller set of answers:
+
+- What are we trying to change?
+- What changed?
+- Why does it matter?
+- What did we learn from developers?
+- What is getting in the way?
+- What are we doing next?
+- Where do we need a decision, budget, or cross-functional help?
+
+A good DevRel report makes those answers easy to see.
+
+## Report on the strategy before the activity
+
+Start with the purpose of the DevRel program.
+
+If the goal is developer adoption, report how the team is influencing discovery, activation, usage, and retained adoption.
+
+If the goal is community health, report participation quality, retention, contributor behavior, and the value the community is creating for members and the company.
+
+If the goal is developer experience, report friction, time to success, repeated problems, product/documentation improvements, and developer-reported experience.
+
+Do not make leadership reverse-engineer the strategy from a list like:
+
+> 8 blog posts, 3 events, 2 livestreams, 1,400 Discord messages.
+
+Those may be useful operational facts, but they do not explain the result.
+
+A better structure is:
+
+```text
+Business / program goal
+        ↓
+Developer outcome
+        ↓
+Evidence
+        ↓
+DevRel contribution
+        ↓
+Learning
+        ↓
+Next decision
+```
+
+## Separate operational metrics from reporting metrics
+
+Your team needs operational detail to improve its work.
+
+Leadership does not need every operational metric every month.
+
+| Operational view | Leadership view |
+| --- | --- |
+| Search queries by docs page | Onboarding friction fell or increased |
+| Every article's traffic | Content contribution to activation/adoption |
+| Event registrations by event | Whether target developers moved to a useful next step |
+| Daily community messages | Community health and repeated developer themes |
+| All support questions | Top friction patterns and what is being fixed |
+| Every SDK download | Activation and sustained usage trends |
+
+The leadership report should summarize the operating system without hiding the evidence behind it.
+
+## Build the report around a small number of outcomes
+
+A simple monthly or quarterly DevRel report can use six sections.
+
+### 1. Executive summary
+
+Write this so someone can read only this section and understand the state of the program.
+
+Example:
+
+> Developer activation improved this quarter after the quickstart and authentication changes. Median time to first API call fell from 18 to 11 minutes, and quickstart completion increased from 51% to 66%. The biggest remaining friction is local environment setup, which appears in support conversations and usability sessions. Next quarter we are focusing on starter environments and SDK examples rather than increasing content volume.
+
+That is much stronger than “we had a successful quarter.”
+
+### 2. Goals and progress
+
+Show the small set of current objectives and key results.
+
+| Objective | Key Result | Baseline | Current | Target | Status |
+| --- | --- | ---: | ---: | ---: | --- |
+| Improve first-time activation | Quickstart completion | 51% | 66% | 70% | On track |
+| Improve first-time activation | Median time to first API call | 18m | 11m | &lt;10m | At risk |
+| Strengthen community support | Peer-answered technical questions | 18% | 26% | 30% | On track |
+
+Do not use green status to hide a weak metric definition. The numbers still need context.
+
+### 3. What changed for developers
+
+This is where DevRel earns its name.
+
+Include the developer-side evidence:
+
+- a repeated friction theme that disappeared;
+- a new issue developers are raising;
+- an integration pattern becoming common;
+- a change in time to first success;
+- a product improvement that came from community feedback;
+- a developer story that explains what the dashboard cannot.
+
+Keep quotes short and representative. Do not cherry-pick praise.
+
+### 4. Contribution to company goals
+
+Translate developer outcomes into the language of the organization.
+
+Examples:
+
+| Developer outcome | Possible company connection |
+| --- | --- |
+| Faster activation | More developers reach product value during evaluation |
+| Better docs | Lower friction, lower repeated support burden, stronger conversion |
+| More retained API usage | Product adoption / customer value |
+| More ecosystem contributions | Product reach, extensibility, community leverage |
+| Better technical education | More qualified evaluators and successful users |
+| Stronger developer feedback loop | Better product decisions and fewer avoidable friction points |
+
+Use **sourced**, **influenced**, or **correlated** language where appropriate rather than implying DevRel deserves exclusive credit for cross-functional outcomes.
+
+### 5. Risks and lessons
+
+Leadership reporting should not be a highlight reel.
+
+If an experiment failed, say what you learned.
+
+If product limitations are stopping adoption, make that visible.
+
+If the team is spending 40% of its time answering a problem that should be fixed in the product or docs, that is useful strategic information.
+
+A simple risk format works:
+
+| Risk / friction | Evidence | Impact | Owner / next action |
+| --- | --- | --- | --- |
+| Local setup failures | Support + usability sessions | Slower first success | SDK + Docs |
+| Event follow-up is inconsistent | CRM/community review | Weak conversion from awareness to evaluation | DevRel |
+| No agreed influence model | Reporting review | Revenue claims remain low-confidence | DevRel + RevOps |
+
+### 6. Decisions and asks
+
+End with what leadership can actually do.
+
+Examples:
+
+- approve budget for a developer research study;
+- prioritize a product friction issue;
+- assign engineering support to maintain SDK examples;
+- agree on the revenue-influence model with RevOps;
+- reduce low-impact event activity so the team can focus on onboarding;
+- approve a community/champion program experiment.
+
+A report that never changes a decision eventually becomes a reporting ritual.
+
+## Use a one-page leadership narrative
+
+A useful structure is:
+
+```text
+1. Goal
+2. Current state
+3. What changed
+4. Why it changed / what we learned
+5. Business connection
+6. Risk
+7. Next move
+8. Ask
+```
+
+You can link to dashboards or append detailed tables for people who want them.
+
+The first page should tell the story.
+
+## Match the report to the audience
+
+DevRel often works across Product, Engineering, Marketing, Support, Customer Success, Sales, and executive leadership. Those teams care about overlapping but different things.
+
+### Product
+
+Emphasize:
+
+- repeated developer friction;
+- feature feedback;
+- onboarding behavior;
+- adoption patterns;
+- product gaps;
+- developer research.
+
+### Engineering
+
+Emphasize:
+
+- SDK/API issues;
+- technical support patterns;
+- sample maintenance;
+- integration failures;
+- developer tooling friction;
+- technical debt affecting the developer journey.
+
+### Marketing
+
+Emphasize:
+
+- target developer reach;
+- content discovery;
+- qualified engagement;
+- event/content pathways;
+- audience insights;
+- adoption signals after awareness.
+
+### Sales / Customer Success / Revenue teams
+
+Emphasize:
+
+- technical evaluation support;
+- adoption blockers;
+- DevRel touchpoints in strategic accounts;
+- influenced opportunities under agreed definitions;
+- expansion/adoption signals;
+- common technical objections.
+
+### Executives
+
+Emphasize:
+
+- the program's purpose;
+- major outcome movement;
+- connection to company priorities;
+- risks;
+- resource trade-offs;
+- decisions needed.
+
+Do not create five unrelated truths. Use one evidence base and change the level of detail and framing.
+
+## Turn developer stories into evidence, not decoration
+
+A story can make a metric understandable.
+
+Weak:
+
+> “Developers loved the workshop.”
+
+Stronger:
+
+> “After the workshop, three teams independently asked about the same authentication pattern. That matched the highest-volume setup question in support, so we added a dedicated example and proposed an SDK change.”
+
+The story explains a pattern and a decision.
+
+Where possible, pair it with a number:
+
+> “Authentication accounted for 31% of onboarding support questions this month. Workshop Q&A and two usability sessions pointed to the same missing mental model.”
+
+That is mixed evidence leadership can use.
+
+## Do not hide uncertainty
+
+Leadership does not need fake precision.
+
+Say:
+
+> “We can show that 14 opportunities had a DevRel touchpoint. We cannot yet say how much revenue DevRel caused because our influence model is not agreed.”
+
+That is more credible than assigning a made-up percentage of revenue to DevRel.
+
+Useful confidence labels include:
+
+- **Observed**: directly measured.
+- **Reported**: developer/customer said it.
+- **Correlated**: variables moved together.
+- **Influenced**: meets an agreed attribution rule.
+- **Estimated**: based on stated assumptions.
+
+Document the assumptions behind estimates.
+
+## Keep trend lines stable
+
+If the definition of “active developer” changes every quarter, the chart may look precise while the comparison is meaningless.
+
+For recurring metrics, document:
+
+- definition;
+- data source;
+- reporting period;
+- inclusion/exclusion rules;
+- baseline;
+- owner;
+- changes to methodology.
+
+If a definition changes, say so in the report.
+
+## A simple monthly DevRel report template
+
+```md
+# DevRel Monthly Report: [Month]
+
+## Executive summary
+[3 to 5 sentences: what changed, why it matters, biggest risk, next move]
+
+## Objectives
+| Objective | Key result | Current | Target | Status |
+| --- | --- | --- | --- | --- |
+
+## Developer outcomes
+- [Outcome + evidence]
+- [Outcome + evidence]
+
+## What we learned from developers
+- [Repeated theme]
+- [Contradictory/edge-case insight]
+
+## Business connection
+- [How developer outcomes connect to current company priorities]
+
+## Risks / blockers
+- [Risk + impact + owner]
+
+## Next period
+- [Priority 1]
+- [Priority 2]
+- [What we are deliberately not doing]
+
+## Decisions / asks
+- [Specific leadership decision or cross-functional ask]
+```
+
+## Advorel reporting example
+
+Advorel's work can span technical content, documentation, video, events, and community programs. A leadership update should not present those as disconnected activity counts.
+
+Use this chain:
+
+```text
+Goal
+  -> Developer outcome
+  -> Evidence
+  -> DevRel contribution
+  -> Learning
+  -> Next decision
+```
+
+For example, an event report could state:
+
+| Part | What to report |
+| --- | --- |
+| Goal | Help a defined developer audience understand an emerging technology |
+| Developer outcome | Attendees reached the intended learning step or identified where they were blocked |
+| Evidence | Attendance by audience type, questions, workshop completion, follow-up resources, and feedback |
+| DevRel contribution | Topic framing, speaker preparation, event delivery, learning materials, and follow-up |
+| Learning | Which explanation worked, where people became confused, and what support they requested |
+| Next decision | Repeat, change, stop, or expand the program based on the evidence |
+
+The project-provided Mojo Africa event figures can support an event report, but leadership should see them as participation evidence. Adoption, retention, revenue, or product usage require separate proof.
+
+Joy's final contribution should add the audience for the original Advorel presentation, the evidence selected, the decision it supported, and what she would change in the next report. Those details remain under contributor review because the presentation itself is not in the repository.
+
+{/* CONTRIBUTOR REVIEW: Add Joy's verified presentation context and lessons when the source material and publication permission are available. */}
+
+## Reporting checklist
+
+- [ ] The report starts with the DevRel/program goal, not a list of activities.
+- [ ] It shows a small set of outcome metrics tied to current priorities.
+- [ ] Important metrics include definitions and stable data sources.
+- [ ] Developer stories explain patterns rather than decorate slides.
+- [ ] We distinguish operational metrics from leadership reporting metrics.
+- [ ] We connect developer outcomes to company goals without overstating causality.
+- [ ] Risks, failures, and uncertainty are visible.
+- [ ] The report says what the team learned and what it will change next.
+- [ ] Leadership asks are specific and actionable.
+- [ ] Detailed dashboards are linked rather than copied into the executive summary.
+- [ ] Contributor examples have context and permission before publication.
+
+## Further reading
+
+- [State of Developer Relations 2024](https://www.stateofdeveloperrelations.com/2024devrelreport)
+- [DeveloperRelations.com: What is Developer Relations?](https://developerrelations.com/guides/what-is-developer-relations/)
+- [DevRelCon: Measuring progress in Developer Relations](https://developerrelations.com/talks/measuring-progress-in-developer-relations/)
