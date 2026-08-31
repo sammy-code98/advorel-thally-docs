@@ -1,9 +1,10 @@
 /**
  * Managed content cache headers: under THALLY_CONTENT_SOURCE=assets, doc
  * responses must carry `Cache-Tag: site:{siteId}` (the purge handle for
- * content publishes) plus a long CDN TTL — and must NOT leak onto admin
- * surfaces, non-content APIs, gated sites, or the default filesystem mode.
- * Also regression-checks that pass-through and rewrite behavior is unchanged.
+ * content publishes). Only unambiguous full HTML and machine projections may
+ * receive a long CDN TTL; browser paths without that evidence stay tag-only.
+ * Headers must not leak onto admin surfaces, non-content APIs, gated sites, or
+ * the default filesystem mode. Pass-through and rewrite behavior is unchanged.
  */
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
@@ -38,18 +39,33 @@ vi.mock('@/lib/agent-endpoints', () => ({
   isPublicAgentEndpoint: vi.fn().mockReturnValue(false),
 }))
 
+vi.mock('@/lib/site-config', () => ({
+  resolveSiteConfig: vi.fn().mockResolvedValue({
+    name: 'Example Docs',
+    description: 'Example documentation',
+    repoUrl: 'https://github.com/example/docs',
+    links: [],
+  }),
+}))
+
 vi.mock('@/lib/cloud-link/edge', async () => {
   const actual = await vi.importActual<typeof import('@/lib/cloud-link/edge')>('@/lib/cloud-link/edge')
   return {
     getCloudAccessConfigEdge: vi.fn().mockResolvedValue(null),
+    isCloudAccessConfiguredEdge: vi.fn().mockReturnValue(false),
     // Real implementation: it only parses THALLY_CLOUD_SITE_CONFIG from env.
     getManagedSiteIdEdge: actual.getManagedSiteIdEdge,
   }
 })
 
+import { GET as getWellKnownDocument } from '@/app/api/well-known/[...document]/route'
 import { middleware } from '@/middleware'
 import { isDocsAccessEnabledEdge, isDocsAccessGrantedEdge } from '@/lib/admin/auth-edge'
-import { getCloudAccessConfigEdge } from '@/lib/cloud-link/edge'
+import { isPublicAgentEndpoint } from '@/lib/agent-endpoints'
+import {
+  getCloudAccessConfigEdge,
+  isCloudAccessConfiguredEdge,
+} from '@/lib/cloud-link/edge'
 import { classifyRequest, isAgentRequest } from '@/lib/traffic-classifier'
 
 const EVENT = { waitUntil: vi.fn() } as never
@@ -66,6 +82,9 @@ let fetchSpy: ReturnType<typeof vi.spyOn>
 beforeEach(() => {
   vi.clearAllMocks()
   vi.mocked(isDocsAccessEnabledEdge).mockReturnValue(false)
+  vi.mocked(isPublicAgentEndpoint).mockReturnValue(false)
+  vi.mocked(getCloudAccessConfigEdge).mockReset().mockResolvedValue(null)
+  vi.mocked(isCloudAccessConfiguredEdge).mockReturnValue(false)
   vi.mocked(isAgentRequest).mockReturnValue(false)
   vi.mocked(classifyRequest).mockReturnValue({
     visitorType: 'human',
@@ -112,15 +131,52 @@ describe('managed content cache headers', () => {
     expect(fetchSpy).not.toHaveBeenCalled()
   })
 
-  it('adds Cache-Tag and a long CDN TTL to doc pages in assets mode', async () => {
+  it('routes OAuth discovery through the framework-owned runtime', async () => {
+    const response = await middleware(
+      docRequest('/.well-known/oauth-authorization-server'),
+      EVENT,
+    )
+
+    expect(response.headers.get('x-middleware-rewrite')).toContain(
+      '/api/well-known/oauth-authorization-server',
+    )
+    expect(getCloudAccessConfigEdge).not.toHaveBeenCalled()
+    expect(fetchSpy).not.toHaveBeenCalled()
+  })
+
+  it('adds Cache-Tag and a long CDN TTL to full HTML doc pages in assets mode', async () => {
     enableManagedAssetsMode()
-    const response = await middleware(docRequest('/getting-started'), EVENT)
+    const response = await middleware(
+      docRequest('/getting-started', { accept: 'text/html' }),
+      EVENT,
+    )
 
     expect(response.headers.get('x-middleware-next')).toBe('1')
     expect(response.headers.get('Cache-Tag')).toBe('site:site_123')
-    expect(response.headers.get('CDN-Cache-Control')).toBe('public, s-maxage=31536000')
+    expect(response.headers.get('CDN-Cache-Control')).toBe(
+      'public, s-maxage=31536000, stale-while-revalidate=86400',
+    )
     // Existing doc-page headers survive alongside the cache headers.
     expect(response.headers.get('X-Llms-Txt')).toBe('https://docs.example.com/llms.txt')
+  })
+
+  it('keeps ambiguous browser document requests tag-only', async () => {
+    enableManagedAssetsMode()
+    const response = await middleware(docRequest('/getting-started'), EVENT)
+
+    // Next strips RSC headers and `_rsc` before production middleware runs.
+    // A request without an explicit HTML Accept header can therefore be an App
+    // Router payload and must never receive a shared CDN lifetime.
+    expect(response.headers.get('Cache-Tag')).toBe('site:site_123')
+    expect(response.headers.get('CDN-Cache-Control')).toBeNull()
+  })
+
+  it('retains the long CDN TTL for URL-stable machine projections', async () => {
+    enableManagedAssetsMode()
+    const response = await middleware(docRequest('/api/docs-index'), EVENT)
+
+    expect(response.headers.get('Cache-Tag')).toBe('site:site_123')
+    expect(response.headers.get('CDN-Cache-Control')).toBe('public, s-maxage=31536000')
   })
 
   it('tags the .md mirror rewrite so publishes purge it too', async () => {
@@ -191,6 +247,38 @@ describe('managed content cache headers', () => {
     expect(admin.headers.get('Cache-Tag')).toBeNull()
   })
 
+  it('returns Problem Details for an unknown machine API request', async () => {
+    const response = await middleware(docRequest('/api/does-not-exist'), EVENT)
+
+    expect(response.status).toBe(404)
+    expect(response.headers.get('content-type')).toContain(
+      'application/problem+json',
+    )
+    await expect(response.json()).resolves.toMatchObject({
+      code: 'api_endpoint_not_found',
+      status: 404,
+      instance: '/api/does-not-exist',
+    })
+  })
+
+  it('preserves browser API-reference pages and RSC navigation', async () => {
+    const browser = await middleware(
+      docRequest('/api/default/posts/get', { accept: 'text/html' }),
+      EVENT,
+    )
+    const rsc = await middleware(
+      docRequest('/api/default/posts/get?_rsc=route-state', {
+        rsc: '1',
+        'next-router-state-tree': '%5B%22%22%5D',
+      }),
+      EVENT,
+    )
+
+    expect(browser.headers.get('x-middleware-next')).toBe('1')
+    expect(rsc.headers.get('x-middleware-next')).toBe('1')
+    expect(rsc.headers.get('x-middleware-rewrite')).toBeNull()
+  })
+
   it('never emits cache headers when the access config is unavailable (fail closed)', async () => {
     // Grant exchange failed or timed out: request gating fails open for
     // availability, but a possibly-gated page must not enter a shared cache.
@@ -213,6 +301,62 @@ describe('managed content cache headers', () => {
     expect(response.headers.get('CDN-Cache-Control')).toBeNull()
   })
 
+  it('returns a structured 401 instead of an HTML redirect for a protected API', async () => {
+    vi.mocked(getCloudAccessConfigEdge).mockResolvedValue({ access: { mode: 'password' } })
+    vi.mocked(isDocsAccessGrantedEdge).mockResolvedValue(false)
+
+    const response = await middleware(docRequest('/api/docs-index'), EVENT)
+    const problem = await response.json()
+
+    expect(response.status).toBe(401)
+    expect(response.headers.get('content-type')).toContain('application/problem+json')
+    expect(response.headers.get('cache-control')).toBe('private, no-store')
+    expect(response.headers.get('location')).toBeNull()
+    expect(problem).toMatchObject({
+      type: 'https://thally.io/problems/docs_access_required',
+      code: 'docs_access_required',
+      status: 401,
+      instance: '/api/docs-index',
+    })
+  })
+
+  it('fails discovery closed when middleware resolves password access but the route lookup fails', async () => {
+    vi.mocked(isPublicAgentEndpoint).mockReturnValue(true)
+    vi.mocked(isCloudAccessConfiguredEdge).mockReturnValue(true)
+    vi.mocked(getCloudAccessConfigEdge)
+      .mockResolvedValueOnce({ access: { mode: 'password' } })
+      .mockResolvedValueOnce(null)
+
+    const request = docRequest('/auth.md')
+    const middlewareResponse = await middleware(request, EVENT)
+    const routeResponse = await getWellKnownDocument(request, {
+      params: Promise.resolve({ document: ['auth-md'] }),
+    })
+    const authGuide = await routeResponse.text()
+
+    expect(middlewareResponse.headers.get('x-middleware-next')).toBe('1')
+    expect(middlewareResponse.headers.get('location')).toBeNull()
+    expect(getCloudAccessConfigEdge).toHaveBeenCalledTimes(2)
+    expect(authGuide).toContain('password-protected documentation service')
+    expect(authGuide).toContain('Cookie: docs-access=<session-value>')
+    expect(authGuide).not.toContain('access is anonymous')
+  })
+
+  it('keeps the interactive access redirect for a protected browser page', async () => {
+    vi.mocked(getCloudAccessConfigEdge).mockResolvedValue({ access: { mode: 'password' } })
+    vi.mocked(isDocsAccessGrantedEdge).mockResolvedValue(false)
+
+    const response = await middleware(
+      docRequest('/getting-started', { accept: 'text/html' }),
+      EVENT,
+    )
+
+    expect(response.status).toBe(307)
+    expect(response.headers.get('location')).toBe(
+      'https://docs.example.com/access?next=%2Fgetting-started',
+    )
+  })
+
   it('never tags while docs-access protection is on (no shared cache of gated pages)', async () => {
     enableManagedAssetsMode()
     vi.mocked(isDocsAccessEnabledEdge).mockReturnValue(true)
@@ -223,19 +367,24 @@ describe('managed content cache headers', () => {
     expect(response.headers.get('Cache-Tag')).toBeNull()
   })
 
-  it('leaves RSC navigation payloads uncached without changing routing', async () => {
-    const response = await middleware(
-      docRequest('/getting-started?_rsc=route-state', {
-        rsc: '1',
-        'next-router-state-tree': '%5B%22%22%5D',
-      }),
-      EVENT,
-    )
+  it.each([
+    ['the RSC query marker', '/getting-started?_rsc=route-state', {}],
+    ['the RSC marker', '/getting-started', { rsc: '1' }],
+    ['the router state tree', '/getting-started', { 'next-router-state-tree': '%5B%22%22%5D' }],
+    ['the router prefetch marker', '/getting-started', { 'next-router-prefetch': '1' }],
+    ['the segment prefetch marker', '/getting-started', { 'next-router-segment-prefetch': '/children' }],
+    ['an HTML accept header alongside a router marker', '/getting-started', { accept: 'text/html', rsc: '1' }],
+  ])('tags managed router payloads for purge but never CDN-caches %s', async (_label, path, headers) => {
+    enableManagedAssetsMode()
+    const response = await middleware(docRequest(path, headers), EVENT)
 
-    // Client-side navigation must never be rewritten or redirected.
+    // Direct runtimes can expose one or more router signals. Keep the purge
+    // tag, but always let Next own these responses so a prefetched shell can
+    // never replace navigated content.
     expect(response.headers.get('x-middleware-next')).toBe('1')
     expect(response.headers.get('location')).toBeNull()
     expect(response.headers.get('x-middleware-rewrite')).toBeNull()
+    expect(response.headers.get('Cache-Tag')).toBe('site:site_123')
     expect(response.headers.get('CDN-Cache-Control')).toBeNull()
     expect(response.headers.get('Netlify-CDN-Cache-Control')).toBeNull()
   })
